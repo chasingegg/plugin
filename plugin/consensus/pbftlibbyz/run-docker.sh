@@ -1,6 +1,6 @@
 #!/bin/sh
 
-docker network inspect pbft-net &>/dev/null || docker network create --subnet=172.172.0.0/16 pbft-net
+docker network inspect pbft-net || docker network create --subnet=172.172.0.0/16 pbft-net
 
 docker run --net pbft-net --ip 172.172.0.2 --name replica-1 -dit --rm pbftlibbyz 1
 docker run --net pbft-net --ip 172.172.0.3 --name replica-2 -dit --rm pbftlibbyz 2
