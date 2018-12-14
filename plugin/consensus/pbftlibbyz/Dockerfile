@@ -1,8 +1,8 @@
-FROM ubuntu:14.04
+FROM ubuntu:16.04
 
 RUN apt-get update
 
-RUN apt-get install -y automake1.10
+RUN apt-get install -y automake
 RUN apt-get install -y gcc g++
 RUN apt-get install -y libgmp-dev
 RUN apt-get install -y libtool

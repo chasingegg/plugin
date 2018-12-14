@@ -60,7 +60,8 @@ func TestPbftlibbyz(t *testing.T) {
 	time.Sleep(5 * time.Second)
 
 	if index == "5" {
-		sendReplyList(q)
+		time.Sleep(2 * time.Second)
+        sendReplyList(q)
 	} else {
 		time.Sleep(60 * time.Second)
 	}
