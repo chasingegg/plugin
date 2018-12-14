@@ -45,8 +45,8 @@ make
 
 #### 准备阶段:
 
-* 首先点击 右上角的 fork 图标， 把chain33 fork 到自己的分支 比如我的是 vipwzw/plugin
-* `git clone https://github.com/vipwzw/chain33.git $GOPATH/src/github.com/33cn/plugin`
+* 首先点击 右上角的 fork 图标， 把plugin fork 到自己的分支 比如我的是 vipwzw/plugin
+* `git clone https://github.com/vipwzw/plugin.git $GOPATH/src/github.com/33cn/plugin`
 
 ```
 注意：这里要 clone 到 $GOPATH/src/github.com/33cn/chain33, 否则go 包路径会找不到
