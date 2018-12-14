@@ -1,4 +1,4 @@
 #!/bin/sh
 
-cd ../../../
-docker build -t pbftlibbyz -f plugin/consensus/pbftlibbyz/Dockerfile .
+dir=$(cd $(dirname $0);pwd)
+docker build -t pbftlibbyz -f $dir/Dockerfile .
