@@ -25,7 +25,6 @@ PROJ := "build"
 default: build depends
 
 install: ## compile libbyz
-	@cp -r $GOPATH/src/github.com/chasingegg/libbyz-go ${LIBBYZ_PATH}
 	@cd ${LIBBYZ_PATH}
 	@rm -rf .git/
 	@cd ${LIBBYZ_PATH}/bft/sfslite-1.2
