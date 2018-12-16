@@ -3,7 +3,7 @@
 dir=$(cd $(dirname $0);pwd)
 
 cd $dir/bft/sfslite-1.2
-#autoreconf -i
+autoreconf -i
 sh -x setup.gnu -f -i -s
 mkdir install
 
