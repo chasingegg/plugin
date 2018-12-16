@@ -25,7 +25,7 @@ PROJ := "build"
 default: build depends
 
 install: ## compile libbyz
-	@cd ${LIBBYZ}; ./build-libbyz.sh
+	@./${LIBBYZ_PATH}/build-libbyz.sh
 	
 	
 build:
