@@ -25,14 +25,14 @@ PROJ := "build"
 default: build depends
 
 install: ## compile libbyz
-	@cd ${LIBBYZ_PATH}
-	@rm -rf .git/
+	#@cd ${LIBBYZ_PATH}
+	#@rm -rf .git/
 	@cd ${LIBBYZ_PATH}/bft/sfslite-1.2
 	@autoreconf -i
 	@sh -x setup.gnu -f -i -s
 	@mkdir install
 	@SHSHOME=${LIBBYZ_PATH}/bft/sfslite-1.2
-	@./configure --prefix=$SFSHOME/install
+	@./configure --prefix=${SFSHOME}/install
 	@make CFLAGS="-Werror=strict-aliasing" CXXFLAGS="-fpermissive -DHAVE_GMP_CXX_OPS"
 	@make install
 	@cd ${LIBBYZ_PATH}/bft
