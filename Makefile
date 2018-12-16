@@ -25,8 +25,6 @@ PROJ := "build"
 default: build depends
 
 install: ## compile libbyz
-	#@cd ${LIBBYZ_PATH}
-	#@rm -rf .git/
 	@cd ${LIBBYZ_PATH}/bft/sfslite-1.2
 	@autoreconf -i
 	@sh -x setup.gnu -f -i -s
