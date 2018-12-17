@@ -10,7 +10,7 @@ SRC_CLI := github.com/33cn/plugin/cli
 APP := build/chain33
 CHAIN33=github.com/33cn/chain33
 CHAIN33_PATH=vendor/${CHAIN33}
-LIBBYZ_PATH=vendor/github.com/33cn/libbyz-go
+dir=vendor/github.com/33cn/libbyz-go
 LDFLAGS := -ldflags "-w -s"
 PKG_LIST_VET := `go list ./... | grep -v "vendor" | grep -v plugin/dapp/evm/executor/vm/common/crypto/bn256`
 PKG_LIST := `go list ./... | grep -v "vendor" | grep -v "chain33/test" | grep -v "mocks" | grep -v "pbft"`
@@ -24,8 +24,21 @@ PROJ := "build"
 
 default: build depends
 
-install: ## compile libbyz
-	@./${LIBBYZ_PATH}/build-libbyz.sh
+install:
+	@cd ${dir}/bft/sfslite-1.2; \
+    @autoreconf -i; \
+    @sh -x setup.gnu -f -i -s; \
+    @mkdir install; \
+    @./configure --prefix=${dir}/bft/sfslite-1.2/install; \
+    @make CFLAGS="-Werror=strict-aliasing" CXXFLAGS="-fpermissive -DHAVE_GMP_CXX_OPS"; \
+    @make install; \
+    @cd ${dir}/bft; \
+    @ln -s sfslite-1.2/install sfs; \
+    @ln -s /usr/lib gmp; \
+    @cd ${dir}/bft/libbyz; \
+    @sed -i '418s/^.*$/  th_assert(sizeof(t.tv_sec) <= sizeof(long), "tv_sec is too big");/' Node.cc; \
+    @sed -i '420s/^.*$/  long int_bits = sizeof(long)*8;/' Node.cc; \
+    @make CPPFLAGS="-I../gmp -I../sfs/include/sfslite -g -Wall -DRECOVERY -fpermissive -DHAVE_GMP_CXX_OPS"
 	
 	
 build:
