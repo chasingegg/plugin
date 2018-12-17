@@ -3,7 +3,7 @@ curdir=$(dir $(dir $(dir $(dir $(abspath $(lastword $(MAKEFILE_LIST)))))))
 
 install:
 	@dir=$(cd curdir; cd ../../../vendor/github.com/33cn/libbyz-go;pwd); \
-	@cd $${dir}/bft/sfslite-1.2; \
+	cd $${dir}/bft/sfslite-1.2; \
     autoreconf -i; \
     sh -x setup.gnu -f -i -s; \
     mkdir install; \
