@@ -1,4 +1,5 @@
-dir=$(cd $(dir $(abspath $(lastword $(MAKEFILE_LIST))));cd ../../../vendor/github.com/33cn/libbyz-go;pwd)
+dir=$(cd $(dir $(abspath .))/../../../vendor/github.com/33cn/libbyz-go;pwd)
+
 install:
 	@cd ${dir}/bft/sfslite-1.2; \
     autoreconf -i; \
